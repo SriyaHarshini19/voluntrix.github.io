@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Voluntrix</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+    body { background: linear-gradient(135deg, #e6f4ea, #e3f2fd, #fff8e1); color: #333; }
+
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 15px 40px; background: white; box-shadow: 0 2px 10px rgba(0,0,0,0.1); position: sticky; top: 0; }
+    nav h1 { color: #2e7d32; }
+    nav ul { display: flex; list-style: none; gap: 20px; }
+    nav ul li a { text-decoration: none; color: #555; font-weight: 500; }
+
+    .btn { padding: 10px 18px; border: none; border-radius: 10px; cursor: pointer; font-weight: 600; }
+    .btn-primary { background: #4caf50; color: white; }
+
+    .hero { text-align: center; padding: 80px 20px; }
+    .hero h2 { font-size: 2.8rem; margin-bottom: 20px; }
+
+    .categories { padding: 60px 20px; text-align: center; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; }
+
+    .card { padding: 25px; border-radius: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+    .food { background: #c8e6c9; }
+    .medicine { background: #bbdefb; }
+    .volunteer { background: #ffcdd2; }
+    .ngo { background: #fff9c4; }
+    .support { background: #ffe0b2; }
+
+    .about { background: white; padding: 60px 20px; text-align: center; }
+
+    footer { background: #222; color: white; text-align: center; padding: 20px; }
+
+    /* Auth Modal */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.5);
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-content {
+      background: white;
+      padding: 30px;
+      border-radius: 15px;
+      width: 300px;
+      text-align: center;
+    }
+
+    input {
+      width: 100%;
+      margin: 10px 0;
+      padding: 10px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+    }
+
+    .switch { color: blue; cursor: pointer; font-size: 14px; }
+
+  </style>
+</head>
+<body>
+
+<nav>
+  <h1>Voluntrix</h1>
+  <ul>
+    <li><a href="#">Home</a></li>
+    <li><a href="#categories">Categories</a></li>
+    <li><a href="#about">About</a></li>
+  </ul>
+  <button class="btn btn-primary" onclick="openModal()">Login</button>
+</nav>
+
+<section class="hero">
+  <h2>Connecting Hearts. Creating Impact.</h2>
+  <p>Join Voluntrix and make a real difference.</p>
+</section>
+
+<section id="categories" class="categories">
+  <h3>Categories</h3>
+  <div class="grid">
+    <div class="card food">Food</div>
+    <div class="card medicine">Medicine</div>
+    <div class="card volunteer">Volunteering</div>
+    <div class="card ngo">NGOs</div>
+    <div class="card support">Support</div>
+  </div>
+</section>
+
+<section class="about">
+  <h3>About</h3>
+  <p>Voluntrix connects people with causes.</p>
+</section>
+
+<footer>
+  <p>© 2026 Voluntrix</p>
+</footer>
+
+<!-- Auth Modal -->
+<div class="modal" id="authModal">
+  <div class="modal-content">
+    <h3 id="formTitle">Login</h3>
+    <input type="text" id="username" placeholder="Username">
+    <input type="password" id="password" placeholder="Password">
+    <button class="btn btn-primary" onclick="handleAuth()">Submit</button>
+    <p class="switch" onclick="toggleForm()">Don't have an account? Sign up</p>
+  </div>
+</div>
+
+<script>
+  let isLogin = true;
+
+  function openModal() {
+    document.getElementById("authModal").style.display = "flex";
+  }
+
+  function toggleForm() {
+    isLogin = !isLogin;
+    document.getElementById("formTitle").innerText = isLogin ? "Login" : "Sign Up";
+    document.querySelector(".switch").innerText = isLogin ? "Don't have an account? Sign up" : "Already have an account? Login";
+  }
+
+  function handleAuth() {
+    const user = document.getElementById("username").value;
+    alert(isLogin ? "Logged in as " + user : "Account created for " + user);
+    document.getElementById("authModal").style.display = "none";
+  }
+</script>
+
+</body>
+</html>
