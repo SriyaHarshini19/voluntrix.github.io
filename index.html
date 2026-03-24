@@ -7,34 +7,58 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
-    body { background: linear-gradient(135deg, #e6f4ea, #e3f2fd, #fff8e1); color: #333; }
+    body { background: linear-gradient(135deg, #e6f4ea, #e3f2fd, #fff8e1); color: #333; scroll-behavior: smooth; }
 
     nav { display: flex; justify-content: space-between; align-items: center; padding: 15px 40px; background: white; box-shadow: 0 2px 10px rgba(0,0,0,0.1); position: sticky; top: 0; }
     nav h1 { color: #2e7d32; }
     nav ul { display: flex; list-style: none; gap: 20px; }
-    nav ul li a { text-decoration: none; color: #555; font-weight: 500; }
+    nav ul li a { text-decoration: none; color: #555; transition: 0.3s; }
+    nav ul li a:hover { color: #2e7d32; }
 
-    .btn { padding: 10px 18px; border: none; border-radius: 10px; cursor: pointer; font-weight: 600; }
+    .btn { padding: 10px 18px; border: none; border-radius: 10px; cursor: pointer; font-weight: 600; transition: 0.3s; }
     .btn-primary { background: #4caf50; color: white; }
+    .btn-primary:hover { transform: scale(1.05); }
 
-    .hero { text-align: center; padding: 80px 20px; }
+    .hero { text-align: center; padding: 80px 20px; animation: fadeIn 1s ease; }
     .hero h2 { font-size: 2.8rem; margin-bottom: 20px; }
 
-    .categories { padding: 60px 20px; text-align: center; }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .categories, .details { padding: 60px 20px; text-align: center; }
     .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; }
 
-    .card { padding: 25px; border-radius: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+    .card {
+      padding: 25px;
+      border-radius: 20px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .card:hover { transform: translateY(-10px) scale(1.05); }
+
     .food { background: #c8e6c9; }
     .medicine { background: #bbdefb; }
     .volunteer { background: #ffcdd2; }
     .ngo { background: #fff9c4; }
     .support { background: #ffe0b2; }
 
-    .about { background: white; padding: 60px 20px; text-align: center; }
+    .hidden { display: none; }
+
+    .detail-box {
+      margin-top: 20px;
+      padding: 20px;
+      background: white;
+      border-radius: 15px;
+      box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+      animation: fadeIn 0.5s ease;
+    }
 
     footer { background: #222; color: white; text-align: center; padding: 20px; }
 
-    /* Auth Modal */
     .modal {
       display: none;
       position: fixed;
@@ -51,16 +75,10 @@
       border-radius: 15px;
       width: 300px;
       text-align: center;
+      animation: fadeIn 0.5s ease;
     }
 
-    input {
-      width: 100%;
-      margin: 10px 0;
-      padding: 10px;
-      border-radius: 8px;
-      border: 1px solid #ccc;
-    }
-
+    input { width: 100%; margin: 10px 0; padding: 10px; border-radius: 8px; border: 1px solid #ccc; }
     .switch { color: blue; cursor: pointer; font-size: 14px; }
 
   </style>
@@ -72,7 +90,7 @@
   <ul>
     <li><a href="#">Home</a></li>
     <li><a href="#categories">Categories</a></li>
-    <li><a href="#about">About</a></li>
+    <li><a href="#details">Details</a></li>
   </ul>
   <button class="btn btn-primary" onclick="openModal()">Login</button>
 </nav>
@@ -85,24 +103,42 @@
 <section id="categories" class="categories">
   <h3>Categories</h3>
   <div class="grid">
-    <div class="card food">Food</div>
-    <div class="card medicine">Medicine</div>
-    <div class="card volunteer">Volunteering</div>
-    <div class="card ngo">NGOs</div>
-    <div class="card support">Support</div>
+    <div class="card food" onclick="showDetails('food')">Food</div>
+    <div class="card medicine" onclick="showDetails('medicine')">Medicine</div>
+    <div class="card volunteer" onclick="showDetails('volunteer')">Volunteering</div>
+    <div class="card ngo" onclick="showDetails('ngo')">NGOs</div>
   </div>
 </section>
 
-<section class="about">
-  <h3>About</h3>
-  <p>Voluntrix connects people with causes.</p>
+<section id="details" class="details">
+  <h3>Category Details</h3>
+
+  <div id="food" class="detail-box hidden">
+    <h4>Food Support</h4>
+    <p>Donate food, volunteer for distribution, or support hunger relief programs.</p>
+  </div>
+
+  <div id="medicine" class="detail-box hidden">
+    <h4>Medical Help</h4>
+    <p>Assist in healthcare drives, donate medicines, or volunteer in hospitals.</p>
+  </div>
+
+  <div id="volunteer" class="detail-box hidden">
+    <h4>Volunteering</h4>
+    <p>Join events, teach students, or support NGOs with your skills.</p>
+  </div>
+
+  <div id="ngo" class="detail-box hidden">
+    <h4>NGOs</h4>
+    <p>Connect with verified NGOs and contribute to meaningful causes.</p>
+  </div>
+
 </section>
 
 <footer>
   <p>© 2026 Voluntrix</p>
 </footer>
 
-<!-- Auth Modal -->
 <div class="modal" id="authModal">
   <div class="modal-content">
     <h3 id="formTitle">Login</h3>
@@ -130,6 +166,13 @@
     const user = document.getElementById("username").value;
     alert(isLogin ? "Logged in as " + user : "Account created for " + user);
     document.getElementById("authModal").style.display = "none";
+  }
+
+  function showDetails(category) {
+    const sections = document.querySelectorAll('.detail-box');
+    sections.forEach(sec => sec.classList.add('hidden'));
+    document.getElementById(category).classList.remove('hidden');
+    document.getElementById('details').scrollIntoView({ behavior: 'smooth' });
   }
 </script>
 
