@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Food Connect</title>
+
+<style>
+body {
+  font-family: Arial;
+  margin: 0;
+  background: linear-gradient(to right, #fff3e0, #ffe0b2);
+}
+
+/* HEADER */
+header {
+  background: linear-gradient(to right, #ff9800, #ff5722);
+  color: white;
+  text-align: center;
+  padding: 20px;
+}
+
+/* NAV */
+nav {
+  background: #212121;
+  padding: 12px;
+  text-align: center;
+}
+
+nav a {
+  color: #ffcc80;
+  margin: 10px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+/* HERO */
+.hero {
+  height: 80vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: 
+    linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+    url('https://images.unsplash.com/photo-1593113630400-ea4288922497');
+  background-size: cover;
+  background-position: center;
+  color: white;
+  text-align: center;
+}
+
+/* NGO SECTION */
+.ngo-section {
+  padding: 40px;
+  text-align: center;
+  background: linear-gradient(to right, #fff8e1, #ffe0b2);
+}
+
+/* 🔥 LIGHT PURPLE CARDS */
+.card {
+  background: #e6e6fa; /* light purple */
+  margin: 20px auto;
+  padding: 20px;
+  width: 260px;
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+  transition: transform 0.3s, box-shadow 0.3s;
+  color: #2e2e2e;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 12px 25px rgba(0,0,0,0.3);
+}
+
+/* 🔥 BUTTON STYLE */
+button {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+/* Add Meal Button */
+.add-btn {
+  background: #7e57c2;
+  color: white;
+}
+
+.add-btn:hover {
+  background: #5e35b1;
+}
+
+/* Tracking Button */
+.track-btn {
+  background: #26a69a;
+  color: white;
+}
+
+.track-btn:hover {
+  background: #00897b;
+}
+
+/* 🔥 LOGIN BUTTON */
+.login-btn {
+  background: #ff7043;
+  color: white;
+}
+
+.login-btn:hover {
+  background: #e64a19;
+}
+
+/* DONATE */
+.donate {
+  background: linear-gradient(to right, #ffcc80, #ffab40);
+  padding: 40px;
+  text-align: center;
+}
+
+/* FOOTER */
+footer {
+  background: #212121;
+  color: white;
+  text-align: center;
+  padding: 10px;
+}
+</style>
+
+</head>
+
+<body>
+
+<header>
+  <h1>🍱 Food Connect</h1>
+  <p>Share Food, Save Lives</p>
+</header>
+
+<nav>
+  <a href="index.html">🏠 Voluntrix</a>
+  <a href="#ngo">NGOs</a>
+  <a href="#donate">Donate</a>
+  <button class="login-btn" onclick="showAlert()">Login</button>
+</nav>
+
+<section class="hero">
+  <h2>Connect • Help • Change</h2>
+  <button onclick="scrollToSection()">Explore</button>
+</section>
+
+<section id="ngo" class="ngo-section">
+  <h2>Food NGOs</h2>
+
+  <div class="card">
+    <h3>Meal Count 🍽️</h3>
+    <p id="mealCount">0 meals served</p>
+    <button class="add-btn" onclick="increaseMeals()">Add Meal</button>
+  </div>
+
+  <div class="card">
+    <h3>Tracking 📦</h3>
+    <p>Track food donations in real-time</p>
+    <button class="track-btn" onclick="showAlert()">Track Now</button>
+  </div>
+
+</section>
+
+<section id="donate" class="donate">
+  <h2>Donate Food</h2>
+  <button onclick="showAlert()">Donate Now</button>
+</section>
+
+<footer>
+  <p>© 2026 Food Connect</p>
+</footer>
+
+<script>
+let meals = 0;
+
+function increaseMeals() {
+  meals += 10;
+  document.getElementById("mealCount").innerText = meals + " meals served";
+}
+
+function showAlert() {
+  alert("Feature coming soon 🚀");
+}
+
+function scrollToSection() {
+  document.getElementById("ngo").scrollIntoView({
+    behavior: "smooth"
+  });
+}
+</script>
+
+</body>
+</html>
