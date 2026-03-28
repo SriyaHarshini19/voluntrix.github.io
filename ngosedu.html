@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Voluntrix - Educational NGOs</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Poppins',sans-serif;
+}
+
+/* Animated Background */
+body{
+  background: linear-gradient(-45deg,#ff9a9e,#fad0c4,#a18cd1,#fbc2eb);
+  background-size:400% 400%;
+  animation:gradientBG 10s ease infinite;
+  color:#333;
+}
+
+@keyframes gradientBG{
+  0%{background-position:0% 50%;}
+  50%{background-position:100% 50%;}
+  100%{background-position:0% 50%;}
+}
+
+/* Header */
+header{
+  text-align:center;
+  padding:30px;
+  color:white;
+}
+
+header h1{
+  font-size:2.5rem;
+}
+
+/* Container */
+.container{
+  padding:20px;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:20px;
+}
+
+/* NGO Card */
+.card{
+  background:white;
+  border-radius:15px;
+  padding:20px;
+  box-shadow:0 10px 20px rgba(0,0,0,0.2);
+  transition:0.4s;
+  transform:translateY(0);
+  opacity:0;
+  animation:fadeIn 1s forwards;
+}
+
+.card:hover{
+  transform:translateY(-10px) scale(1.03);
+}
+
+/* Animation delay */
+.card:nth-child(1){animation-delay:0.2s;}
+.card:nth-child(2){animation-delay:0.4s;}
+.card:nth-child(3){animation-delay:0.6s;}
+.card:nth-child(4){animation-delay:0.8s;}
+.card:nth-child(5){animation-delay:1s;}
+.card:nth-child(6){animation-delay:1.2s;}
+
+@keyframes fadeIn{
+  from{
+    opacity:0;
+    transform:translateY(20px);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+.card h2{
+  color:#6a11cb;
+  margin-bottom:10px;
+}
+
+.card p{
+  font-size:14px;
+  margin-bottom:6px;
+}
+
+.section-title{
+  font-weight:600;
+  margin-top:10px;
+  color:#444;
+}
+
+.location{
+  font-weight:bold;
+  color:#ff6f61;
+}
+
+/* Footer */
+footer{
+  text-align:center;
+  padding:20px;
+  color:white;
+  font-size:14px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>📚 Voluntrix - Educational NGOs</h1>
+  <p>Connecting Volunteers with Education Initiatives</p>
+</header>
+
+<div class="container">
+
+  <div class="card">
+    <h2>Ashray Akruti</h2>
+    <p class="location">📍 Hyderabad</p>
+    <p><b>Focus:</b> Education & Disability Support</p>
+    <p>Inclusive education for differently-abled children.</p>
+
+    <p class="section-title">Contact</p>
+    <p>📞 +91 40 1234 5678</p>
+    <p>📧 info@ashrayakruti.org</p>
+    <p>📍 Hyderabad, Telangana</p>
+  </div>
+
+  <div class="card">
+    <h2>Don Bosco Navajeevan</h2>
+    <p class="location">📍 Hyderabad</p>
+    <p><b>Focus:</b> Child Care & Education</p>
+    <p>Supports street children with education and shelter.</p>
+
+    <p class="section-title">Contact</p>
+    <p>📞 +91 40 2345 6789</p>
+    <p>📧 contact@donbosconavajeevan.org</p>
+    <p>📍 Hyderabad, Telangana</p>
+  </div>
+
+  <div class="card">
+    <h2>Mamidipudi Venkatarangaiya Foundation</h2>
+    <p class="location">📍 Hyderabad</p>
+    <p><b>Focus:</b> Education & Social Development</p>
+    <p>Promotes literacy and community development.</p>
+
+    <p class="section-title">Contact</p>
+    <p>📞 +91 40 3456 7890</p>
+    <p>📧 info@mvfoundation.org</p>
+    <p>📍 Hyderabad, Telangana</p>
+  </div>
+
+  <div class="card">
+    <h2>Heartfulness Education Trust</h2>
+    <p class="location">📍 Rangareddy</p>
+    <p><b>Focus:</b> Education & Rural Development</p>
+    <p>Value-based education and rural outreach programs.</p>
+
+    <p class="section-title">Contact</p>
+    <p>📞 +91 40 4567 8901</p>
+    <p>📧 education@heartfulness.org</p>
+    <p>📍 Rangareddy, Telangana</p>
+  </div>
+
+  <div class="card">
+    <h2>Youth for Seva</h2>
+    <p class="location">📍 Warangal</p>
+    <p><b>Focus:</b> Volunteer-based Education</p>
+    <p>Engages youth in teaching and service activities.</p>
+
+    <p class="section-title">Contact</p>
+    <p>📞 +91 80 6543 2100</p>
+    <p>📧 info@youthforseva.org</p>
+    <p>📍 Warangal, Telangana</p>
+  </div>
+
+  <div class="card">
+    <h2>Aksharachaitanya</h2>
+    <p class="location">📍 Karimnagar</p>
+    <p><b>Focus:</b> Education & Literacy</p>
+    <p>Improving literacy and access to education.</p>
+
+    <p class="section-title">Contact</p>
+    <p>📞 +91 8782 345678</p>
+    <p>📧 contact@aksharachaitanya.org</p>
+    <p>📍 Karimnagar, Telangana</p>
+  </div>
+
+</div>
+
+<footer>
+  © 2026 Voluntrix | Educational NGO Network
+</footer>
+
+</body>
+</html>
