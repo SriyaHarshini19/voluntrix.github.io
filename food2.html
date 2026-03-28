@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>District NGOs - Telangana</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: #0f0f0f;
+    color: white;
+}
+
+/* HEADER */
+header {
+    padding: 20px;
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+}
+
+/* SEARCH */
+#search {
+    width: 90%;
+    margin: 10px auto;
+    display: block;
+    padding: 12px;
+    border-radius: 10px;
+    border: none;
+    font-size: 16px;
+}
+
+/* SECTION */
+.section {
+    margin: 30px 20px;
+    opacity: 0;
+    transform: translateY(40px);
+    transition: 0.6s ease;
+}
+
+.section.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* CARD */
+.card {
+    background: #1c1c1c;
+    padding: 15px;
+    border-radius: 12px;
+    margin-top: 10px;
+}
+
+.card:hover {
+    transform: scale(1.02);
+}
+
+/* LIST */
+li {
+    margin-bottom: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+li:hover {
+    color: #ff7043;
+}
+
+/* NO RESULT */
+#noResult {
+    text-align: center;
+    display: none;
+    color: #ff7043;
+}
+
+/* MODAL */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0; top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.8);
+}
+
+/* MODAL CONTENT */
+.modal-content {
+    background: #1c1c1c;
+    margin: 15% auto;
+    padding: 20px;
+    width: 85%;
+    max-width: 400px;
+    border-radius: 12px;
+    text-align: center;
+    animation: popup 0.4s ease;
+}
+
+@keyframes popup {
+    from { transform: scale(0.7); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+/* CLOSE BUTTON */
+.close {
+    float: right;
+    font-size: 25px;
+    cursor: pointer;
+}
+</style>
+</head>
+
+<body>
+
+<header>🍱 District-wise Food NGOs – Telangana</header>
+
+<input type="text" id="search" placeholder="Search district or state..." onkeyup="filterDistricts()">
+
+<div id="noResult">😔 No districts found</div>
+
+<!-- HYDERABAD -->
+<div class="section" data-location="hyderabad telangana">
+<h2>🏙 Hyderabad</h2>
+<div class="card">
+<ul>
+<li onclick="openModal('Akshaya Patra Foundation',
+'📍 Hyderabad<br>📞 +91 80 3014 3400<br>📧 info@akshayapatra.org')">
+Akshaya Patra Foundation – Midday meals
+</li>
+
+<li onclick="openModal('Aashri Society',
+'📍 Hyderabad<br>📞 +91 9876543210<br>📧 info@aashri.org')">
+Aashri Society – Free food for needy
+</li>
+
+<li onclick="openModal('Feeding India',
+'📍 Pan India<br>📧 contact@feedingindia.org<br>🌐 feedingindia.org')">
+Feeding India – Food rescue drives
+</li>
+</ul>
+</div>
+</div>
+
+<!-- RANGAREDDY -->
+<div class="section" data-location="rangareddy telangana">
+<h2>🏙 Rangareddy</h2>
+<div class="card">
+<ul>
+<li onclick="openModal('Robin Hood Army',
+'📍 Hyderabad<br>📧 volunteer@robinhoodarmy.com')">
+Robin Hood Army – Food distribution
+</li>
+
+<li onclick="openModal('No Food Waste',
+'📍 Tamil Nadu & Telangana<br>📞 +91 90877 90877')">
+No Food Waste – Collects excess food
+</li>
+</ul>
+</div>
+</div>
+
+<!-- WARANGAL -->
+<div class="section" data-location="warangal telangana">
+<h2>🏙 Warangal</h2>
+<div class="card">
+<ul>
+<li onclick="openModal('Aged People Care Society',
+'📍 Warangal<br>📞 +91 9000000000')">
+Aged People Care Society – Food support
+</li>
+
+<li onclick="openModal('Feeding India',
+'📍 Telangana<br>📧 contact@feedingindia.org')">
+Feeding India – Donation drives
+</li>
+</ul>
+</div>
+</div>
+
+<!-- KHAMMAM -->
+<div class="section" data-location="khammam telangana">
+<h2>🏙 Khammam</h2>
+<div class="card">
+<ul>
+<li onclick="openModal('Action for Integrated Development',
+'📍 Khammam<br>📞 +91 9111111111')">
+Action for Integrated Development – Food aid
+</li>
+
+<li onclick="openModal('EFFORT Foundation',
+'📍 Telangana<br>📧 info@effort.org')">
+EFFORT Foundation – Community food welfare
+</li>
+</ul>
+</div>
+</div>
+
+<!-- NALGONDA -->
+<div class="section" data-location="nalgonda telangana">
+<h2>🏙 Nalgonda</h2>
+<div class="card">
+<ul>
+<li onclick="openModal('Rural Development Society',
+'📍 Nalgonda<br>📞 +91 9222222222')">
+Rural Development Society – Food help
+</li>
+
+<li onclick="openModal('All Friends Foundation',
+'📍 Telangana<br>📧 allfriends@gmail.com')">
+All Friends Foundation – Welfare & food
+</li>
+</ul>
+</div>
+</div>
+
+<!-- MODAL -->
+<div id="ngoModal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <h2 id="ngoName"></h2>
+    <p id="ngoDetails"></p>
+  </div>
+</div>
+
+<script>
+
+/* SCROLL ANIMATION */
+window.addEventListener("scroll", reveal);
+
+function reveal() {
+    let sections = document.querySelectorAll(".section");
+
+    sections.forEach(sec => {
+        let windowHeight = window.innerHeight;
+        let top = sec.getBoundingClientRect().top;
+
+        if (top < windowHeight - 100) {
+            sec.classList.add("show");
+        }
+    });
+}
+
+reveal();
+
+/* FILTER */
+function filterDistricts() {
+    let input = document.getElementById("search").value.toLowerCase();
+    let sections = document.querySelectorAll(".section");
+    let found = 0;
+
+    sections.forEach(sec => {
+        let location = sec.getAttribute("data-location");
+
+        if (location.includes(input)) {
+            sec.style.display = "block";
+            found++;
+        } else {
+            sec.style.display = "none";
+        }
+    });
+
+    document.getElementById("noResult").style.display = 
+        found === 0 ? "block" : "none";
+}
+
+/* MODAL */
+function openModal(name, details) {
+    document.getElementById("ngoName").innerHTML = name;
+    document.getElementById("ngoDetails").innerHTML = details;
+    document.getElementById("ngoModal").style.display = "block";
+}
+
+function closeModal() {
+    document.getElementById("ngoModal").style.display = "none";
+}
+
+window.onclick = function(event) {
+    let modal = document.getElementById("ngoModal");
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+</script>
+
+</body>
+</html>
