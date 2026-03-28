@@ -21,7 +21,6 @@
       scroll-behavior: smooth;
     }
 
-    /* NAVBAR */
     nav {
       display: flex;
       justify-content: space-between;
@@ -71,7 +70,6 @@
       transform: scale(1.05);
     }
 
-    /* HERO */
     .hero {
       text-align: center;
       padding: 80px 20px;
@@ -94,7 +92,6 @@
       }
     }
 
-    /* CATEGORIES */
     .categories {
       padding: 60px 20px;
       text-align: center;
@@ -149,14 +146,11 @@
       left: 100%;
     }
 
-    /* CATEGORY COLORS */
     .food { background: #e8f5e9; }
     .education { background: #e3f2fd; }
     .volunteer { background: #ffebee; }
-    .ngo { background: #fffde7; }
     .basic { background: #fff3e0; }
 
-    /* ABOUT */
     .about {
       background: white;
       padding: 60px 20px;
@@ -170,7 +164,6 @@
       padding: 20px;
     }
 
-    /* MODAL */
     .modal {
       display: none;
       position: fixed;
@@ -210,7 +203,6 @@
 
 <body>
 
-<!-- NAV -->
 <nav>
   <h1>Voluntrix</h1>
   <ul>
@@ -221,13 +213,11 @@
   <button class="btn btn-primary" onclick="openModal()">Login</button>
 </nav>
 
-<!-- HERO -->
 <section class="hero">
   <h2>Connecting Hearts. Creating Impact.</h2>
   <p>Join Voluntrix and make a real difference.</p>
 </section>
 
-<!-- CATEGORIES -->
 <section id="categories" class="categories">
   <h3>Categories</h3>
 
@@ -241,35 +231,29 @@
     </a>
 
     <a href="education.html" style="text-decoration: none; color: inherit;">
-     <div class="card education">
-     <h4>📚 Education</h4>
-     <p>Support learning & schools</p>
-  </div>
-</a>
+      <div class="card education">
+        <h4>📚 Education</h4>
+        <p>Support learning & schools</p>
+      </div>
+    </a>
     
-   <a href="volunteer.html" style="text-decoration: none; color: inherit;">
-  <div class="card volunteer">
-    <h4>🤝 Volunteering</h4>
-    <p>Give your time & skills</p>
-  </div>
-</a>
+    <a href="volunteer.html" style="text-decoration: none; color: inherit;">
+      <div class="card volunteer">
+        <h4>🤝 Volunteering</h4>
+        <p>Give your time & skills</p>
+      </div>
+    </a>
 
-    <div class="card ngo">
-      <h4>🏢 NGOs</h4>
-      <p>Connect with organizations</p>
-    </div>
-
-  <a href="basic.html" style="text-decoration:none; color:inherit;">
-  <div class="card basic">
-    <h4>🏠 Basic Needs</h4>
-    <p>Help with essentials</p>
-  </div>
-</a>
+    <a href="basic.html" style="text-decoration:none; color:inherit;">
+      <div class="card basic">
+        <h4>🏠 Basic Needs</h4>
+        <p>Help with essentials</p>
+      </div>
+    </a>
 
   </div>
 </section>
 
-<!-- ABOUT -->
 <section class="about" id="about">
   <h3>About</h3>
   <p>Voluntrix connects people with meaningful causes and opportunities.</p>
@@ -279,7 +263,6 @@
   <p>© 2026 Voluntrix</p>
 </footer>
 
-<!-- LOGIN MODAL -->
 <div class="modal" id="authModal">
   <div class="modal-content">
     <h3 id="formTitle">Login</h3>
