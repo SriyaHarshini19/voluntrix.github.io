@@ -56,24 +56,17 @@ nav a {
   background: linear-gradient(to right, #fff8e1, #ffe0b2);
 }
 
-/* 🔥 LIGHT PURPLE CARDS */
+/* CARDS */
 .card {
-  background: #e6e6fa; /* light purple */
+  background: #e6e6fa;
   margin: 20px auto;
   padding: 20px;
   width: 260px;
   border-radius: 15px;
   box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-  transition: transform 0.3s, box-shadow 0.3s;
-  color: #2e2e2e;
 }
 
-.card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 12px 25px rgba(0,0,0,0.3);
-}
-
-/* 🔥 BUTTON STYLE */
+/* BUTTONS */
 button {
   padding: 10px 15px;
   border: none;
@@ -83,34 +76,14 @@ button {
   font-weight: bold;
 }
 
-/* Add Meal Button */
-.add-btn {
-  background: #7e57c2;
-  color: white;
-}
-
-.add-btn:hover {
-  background: #5e35b1;
-}
-
-/* Tracking Button */
 .track-btn {
   background: #26a69a;
   color: white;
 }
 
-.track-btn:hover {
-  background: #00897b;
-}
-
-/* 🔥 LOGIN BUTTON */
 .login-btn {
   background: #ff7043;
   color: white;
-}
-
-.login-btn:hover {
-  background: #e64a19;
 }
 
 /* DONATE */
@@ -142,7 +115,7 @@ footer {
   <a href="index.html">🏠 Voluntrix</a>
   <a href="#ngo">NGOs</a>
   <a href="#donate">Donate</a>
-  <button class="login-btn" onclick="showAlert()">Login</button>
+  <button class="login-btn" onclick="login()">Login</button>
 </nav>
 
 <section class="hero">
@@ -151,25 +124,27 @@ footer {
 </section>
 
 <section id="ngo" class="ngo-section">
-  <h2>Food NGOs</h2>
+  <h2>Food Tracking</h2>
 
-  <div class="card">
-    <h3>Meal Count 🍽️</h3>
-    <p id="mealCount">0 meals served</p>
-    <button class="add-btn" onclick="increaseMeals()">Add Meal</button>
-  </div>
-
+  <!-- Tracker -->
   <div class="card">
     <h3>Tracking 📦</h3>
     <p>Track food donations in real-time</p>
-    <button class="track-btn" onclick="showAlert()">Track Now</button>
+
+    <button class="track-btn" onclick="addDonation()">Add Donation</button>
+    <button class="track-btn" onclick="showTracker()">Track Now</button>
+
+    <div id="trackerBox" style="display:none; margin-top:10px;">
+      <h4>Live Donations:</h4>
+      <div id="trackerList"></div>
+    </div>
   </div>
 
 </section>
 
 <section id="donate" class="donate">
   <h2>Donate Food</h2>
-  <button onclick="showAlert()">Donate Now</button>
+  <button onclick="addDonation()">Donate Now</button>
 </section>
 
 <footer>
@@ -177,17 +152,73 @@ footer {
 </footer>
 
 <script>
-let meals = 0;
+let donations = [];
 
-function increaseMeals() {
-  meals += 10;
-  document.getElementById("mealCount").innerText = meals + " meals served";
+// 📍 Add donation with location
+function addDonation() {
+  let donor = prompt("Enter your name:");
+  let quantity = prompt("Enter number of meals:");
+
+  if (!donor || !quantity) return;
+
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(function(position) {
+
+      let lat = position.coords.latitude;
+      let lon = position.coords.longitude;
+
+      let entry = {
+        name: donor,
+        meals: quantity,
+        time: new Date().toLocaleTimeString(),
+        location: `https://www.google.com/maps?q=${lat},${lon}`
+      };
+
+      donations.push(entry);
+      updateTracker();
+
+      alert("Donation + Location added ✅");
+
+    }, function() {
+      alert("Please allow location access ❌");
+    });
+  } else {
+    alert("Geolocation not supported");
+  }
 }
 
-function showAlert() {
-  alert("Feature coming soon 🚀");
+// 📊 Update tracker
+function updateTracker() {
+  let tracker = document.getElementById("trackerList");
+  tracker.innerHTML = "";
+
+  donations.forEach((d) => {
+    let item = document.createElement("p");
+
+    item.innerHTML = `
+      <b>${d.name}</b> donated ${d.meals} meals at ${d.time}<br>
+      📍 <a href="${d.location}" target="_blank">View Location</a>
+      <hr>
+    `;
+
+    tracker.appendChild(item);
+  });
 }
 
+// 👀 Show tracker
+function showTracker() {
+  document.getElementById("trackerBox").style.display = "block";
+}
+
+// 🔐 Login
+function login() {
+  let user = prompt("Enter username:");
+  if (user) {
+    alert("Welcome " + user + " 👋");
+  }
+}
+
+// 🔽 Scroll
 function scrollToSection() {
   document.getElementById("ngo").scrollIntoView({
     behavior: "smooth"
