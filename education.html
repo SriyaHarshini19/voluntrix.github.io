@@ -157,6 +157,13 @@ footer {
     <button onclick="showAlert()">Join</button>
   </div>
 
+  <!-- 🔥 NEW LINKED CARD -->
+  <div class="card">
+    <h3>🏫 Educational NGOs</h3>
+    <p>Explore NGOs, contacts & locations</p>
+    <button onclick="goToNGOs()">View NGOs</button>
+  </div>
+
 </section>
 
 <footer>
@@ -172,6 +179,11 @@ function scrollToSection() {
   document.getElementById("programs").scrollIntoView({
     behavior: "smooth"
   });
+}
+
+/* 🔗 LINK FUNCTION */
+function goToNGOs() {
+  window.location.href = "edu-ngos.html";
 }
 </script>
 
