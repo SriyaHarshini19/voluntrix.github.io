@@ -3,92 +3,109 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Voluntrix - Basic Needs NGOs</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+<title>voluntrix</title>
 
 <style>
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  font-family:'Poppins',sans-serif;
+body {
+  font-family: Arial;
+  margin: 0;
+  background: #fff3e0;
 }
 
-/* 🌿 Soft Muted Violet Background */
-body{
-  background: #dcd6f7; /* soft dusty violet */
-  color:#333;
+/* Header */
+header {
+  background: #fb8c00;
+  color: white;
+  text-align: center;
+  padding: 20px;
 }
 
-/* HEADER */
-header{
-  text-align:center;
-  padding:30px;
-  color:#4b3f72;
+/* Navigation */
+nav {
+  background: #212121;
+  padding: 10px;
+  text-align: center;
 }
 
-header h1{
-  font-size:2.5rem;
+nav a {
+  color: #ffcc80;
+  margin: 10px;
+  text-decoration: none;
+  font-weight: bold;
 }
 
-/* SECTION */
-.section{
-  padding:20px;
+/* Section */
+.section {
+  padding: 30px;
+  text-align: center;
 }
 
-.section h2{
-  color:#4b3f72;
-  margin-bottom:15px;
+/* Grid */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
 }
 
-/* GRID */
-.container{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-  gap:20px;
+/* Cards */
+.card {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+  transition: 0.3s;
 }
 
-/* CARD */
-.card{
-  background:white;
-  border-radius:15px;
-  padding:20px;
-  box-shadow:0 8px 18px rgba(0,0,0,0.12);
-  transition:0.3s;
+.card:hover {
+  transform: translateY(-8px);
 }
 
-.card:hover{
-  transform:translateY(-8px) scale(1.02);
+/* Button */
+button {
+  background: #fb8c00;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
-/* TEXT */
-.card h3{
-  color:#5e548e;
-  margin-bottom:10px;
+/* Footer */
+footer {
+  background: #212121;
+  color: white;
+  text-align: center;
+  padding: 10px;
 }
 
-.card p{
-  font-size:14px;
-  margin-bottom:6px;
+/* Popup */
+.popup {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.6);
 }
 
-.label{
-  font-weight:600;
-  margin-top:8px;
-  color:#444;
+.popup-content {
+  background: white;
+  width: 320px;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  animation: popupAnim 0.4s forwards;
 }
 
-.location{
-  color:#7b6aa8;
-  font-weight:bold;
-}
-
-/* FOOTER */
-footer{
-  text-align:center;
-  padding:20px;
-  color:#4b3f72;
+/* Animation */
+@keyframes popupAnim {
+  from { transform: translate(-50%, -50%) scale(0); }
+  to { transform: translate(-50%, -50%) scale(1); }
 }
 </style>
 </head>
@@ -96,103 +113,225 @@ footer{
 <body>
 
 <header>
-  <h1>🌍 Voluntrix - Basic Needs NGOs</h1>
-  <p>Clothing | Shelter | Health Support</p>
+  <h1> Voluntrix </h1>
 </header>
 
-<!-- 👕 CLOTHING -->
-<div class="section">
-  <h2>👕 Clothing NGOs</h2>
-  <div class="container">
+<nav>
+  <a href="index.html">Home</a>
+  <a href="basic.html">Basic Needs</a>
+</nav>
 
-    <div class="card">
-      <h3>Goonj</h3>
-      <p class="location">📍 Hyderabad</p>
-      <p>Recycling clothes for rural communities.</p>
+<!-- HYDERABAD -->
+<section class="section">
+<h2>Hyderabad District</h2>
 
-      <p class="label">Contact</p>
-      <p>📞 +91 11 2697 2351</p>
-      <p>📧 info@goonj.org</p>
-      <p>📍 Hyderabad Outreach</p>
-    </div>
+<div class="grid">
 
-    <div class="card">
-      <h3>Robin Hood Army</h3>
-      <p class="location">📍 Hyderabad</p>
-      <p>Distributes clothes and supports the needy.</p>
+<div class="card">
+<h3>Terminate Hunger</h3>
+<p>Food donation & distribution</p>
+<button onclick="showDetails('Terminate Hunger','Hyderabad','Malakpet','info@terminatehunger.org')">Donate</button>
+</div>
 
-      <p class="label">Contact</p>
-      <p>📞 +91 90000 11111</p>
-      <p>📧 volunteer@robinhoodarmy.com</p>
-      <p>📍 Hyderabad, Telangana</p>
-    </div>
+<div class="card">
+<h3>Akshaya Patra Foundation</h3>
+<p>Meals for children & poor</p>
+<button onclick="showDetails('Akshaya Patra','Hyderabad','Kokapet','info@akshayapatra.org')">Donate</button>
+</div>
 
+<div class="card">
+<h3>Helping Hand Foundation</h3>
+<p>Food + medical support</p>
+<button onclick="showDetails('Helping Hand','Hyderabad','Shivarampally','help@hhf.org')">Donate</button>
+</div>
+
+<div class="card">
+<h3>Sahara Team Trust</h3>
+<p>Food feeding charity</p>
+<button onclick="showDetails('Sahara Trust','Hyderabad','Nampally','sahara@gmail.com')">Donate</button>
+</div>
+
+<div class="card">
+<h3>Amma Jyothi Foundation</h3>
+<p>Food donation services</p>
+<button onclick="showDetails('Amma Jyothi','Hyderabad','Hyderabad','amma@gmail.com')">Donate</button>
+</div>
+
+<div class="card">
+<h3>Food Feeding & Hope Service</h3>
+<p>Feeding poor & homeless</p>
+<button onclick="showDetails('Hope Service','Hyderabad','Hyderabad','hope@gmail.com')">Donate</button>
+</div>
+
+<div class="card">
+<h3>Charvya Foundation</h3>
+<p>Food distribution programs</p>
+<button onclick="showDetails('Charvya','Hyderabad','Hyderabad','charvya@gmail.com')">Donate</button>
+</div>
+
+<div class="card">
+<h3>GHMC Feed The Need</h3>
+<p>Government food program</p>
+<button onclick="showDetails('GHMC Program','Hyderabad','Sanath Nagar','ghmc@telangana.gov.in')">Donate</button>
+</div>
+
+</div>
+</section>
+
+<!-- WARANGAL -->
+<section class="section">
+<h2>Warangal District</h2>
+
+<div class="grid">
+
+<div class="card">
+<h3>Priyadarshini Mahila Mandali</h3>
+<p>Women welfare & food support</p>
+<button onclick="showDetails('Priyadarshini','Warangal','Warangal','pm@gmail.com')">Donate</button>
+</div>
+
+<div class="card">
+<h3>Abhyudaya Seva Samithi</h3>
+<p>Social & food welfare</p>
+<button onclick="showDetails('Abhyudaya','Warangal','Warangal','abhyudaya@gmail.com')">Donate</button>
+</div>
+
+<div class="card">
+<h3>Navodhaya Organization</h3>
+<p>Rural & food programs</p>
+<button onclick="showDetails('Navodhaya','Warangal','Warangal','navodhaya@gmail.com')">Donate</button>
+</div>
+
+</div>
+</section>
+
+<!-- KARIMNAGAR -->
+<section class="section">
+<h2>Karimnagar District</h2>
+
+<div class="grid">
+
+<div class="card">
+<h3>Earth Foundation</h3>
+<p>Food & social services</p>
+<button onclick="showDetails('Earth Foundation','Karimnagar','Karimnagar','earth@gmail.com')">Donate</button>
+</div>
+
+<div class="card">
+<h3>Riser Helping Hands</h3>
+<p>Food distribution</p>
+<button onclick="showDetails('Riser','Karimnagar','Karimnagar','riser@gmail.com')">Donate</button>
+</div>
+
+<div class="card">
+<h3>Helping Hands NGO</h3>
+<p>Food & welfare</p>
+<button onclick="showDetails('Helping Hands','Karimnagar','Karimnagar','help@gmail.com')">Donate</button>
+</div>
+
+<div class="card">
+<h3>Janani Welfare Society</h3>
+<p>Rural & food programs</p>
+<button onclick="showDetails('Janani','Karimnagar','Karimnagar','janani@gmail.com')">Donate</button>
+</div>
+
+<div class="card">
+<h3>Mahesh Charitable Trust</h3>
+<p>Food & charity services</p>
+<button onclick="showDetails('Mahesh Trust','Karimnagar','Karimnagar','mahesh@gmail.com')">Donate</button>
+</div>
+
+</div>
+</section>
+
+<!-- POPUP -->
+<div class="popup" id="popup">
+  <div class="popup-content">
+    <h3 id="ngoName"></h3>
+    <p id="ngoLocation"></p>
+    <p id="ngoAddress"></p>
+    <p id="ngoEmail"></p>
+    <button onclick="closePopup()">Close</button>
   </div>
 </div>
 
-<!-- 🏠 SHELTER -->
-<div class="section">
-  <h2>🏠 Shelter NGOs</h2>
-  <div class="container">
+<script>
+function showDetails(name, location, address, email) {
+  document.getElementById("popup").style.display = "block";
+  document.getElementById("ngoName").innerText = name;
+  document.getElementById("ngoLocation").innerText = "Location: " + location;
+  document.getElementById("ngoAddress").innerText = "Address: " + address;
+  document.getElementById("ngoEmail").innerText = "Email: " + email;
+}
 
-    <div class="card">
-      <h3>Aged People Care Association</h3>
-      <p class="location">📍 Warangal</p>
-      <p>Provides shelter and care for elderly people.</p>
+function closePopup() {
+  document.getElementById("popup").style.display = "none";
+}
+</script>
 
-      <p class="label">Contact</p>
-      <p>📞 +91 870 123 4567</p>
-      <p>📧 apca@ngo.org</p>
-      <p>📍 Warangal, Telangana</p>
-    </div>
-
-    <div class="card">
-      <h3>Sahaja Seva Samithi</h3>
-      <p class="location">📍 Mahabubnagar</p>
-      <p>Supports shelter and rural welfare programs.</p>
-
-      <p class="label">Contact</p>
-      <p>📞 +91 94400 22222</p>
-      <p>📧 sahaja@ngo.org</p>
-      <p>📍 Mahabubnagar, Telangana</p>
-    </div>
-
-  </div>
-</div>
-
-<!-- ❤️ HEALTH -->
-<div class="section">
-  <h2>❤️ Health NGOs</h2>
-  <div class="container">
-
-    <div class="card">
-      <h3>Grace Cancer Foundation</h3>
-      <p class="location">📍 Hyderabad</p>
-      <p>Supports cancer patients with care and aid.</p>
-
-      <p class="label">Contact</p>
-      <p>📞 +91 40 4567 8900</p>
-      <p>📧 support@gracecancerfoundation.org</p>
-      <p>📍 Hyderabad, Telangana</p>
-    </div>
-
-    <div class="card">
-      <h3>Sphoorti Foundation</h3>
-      <p class="location">📍 Rangareddy</p>
-      <p>Provides health and social support services.</p>
-
-      <p class="label">Contact</p>
-      <p>📞 +91 99887 66554</p>
-      <p>📧 info@sphoorti.org</p>
-      <p>📍 Rangareddy, Telangana</p>
-    </div>
-
-  </div>
-</div>
-
-<footer>
-  © 2026 Voluntrix | Basic Needs NGO Network
 </footer>
+<!-- GOVERNMENT PROGRAMS -->
+<section class="section">
+<h2>Government of Telangana Food Programs</h2>
 
+<div class="grid">
+
+<div class="card">
+<h3>Annapurna Food Scheme</h3>
+<p>Free/low-cost meals for poor people</p>
+<button onclick="showDetails(
+'Annapurna Scheme',
+'Hyderabad',
+'200+ Centers across Hyderabad',
+'annapurna@telangana.gov.in'
+)">Donate</button>
+</div>
+
+<div class="card">
+<h3>GHMC Feed the Need</h3>
+<p>Public fridge food donation system</p>
+<button onclick="showDetails(
+'Feed the Need',
+'Hyderabad',
+'Multiple locations (GHMC)',
+'ghmc@telangana.gov.in'
+)">Donate</button>
+</div>
+
+<div class="card">
+<h3>Public Distribution System</h3>
+<p>Rice & food supply for poor families</p>
+<button onclick="showDetails(
+'PDS Telangana',
+'Telangana',
+'Ration Shops across districts',
+'pds@telangana.gov.in'
+)">Donate</button>
+</div>
+
+<div class="card">
+<h3>Telangana Foods Program</h3>
+<p>Nutrition supply for women & children</p>
+<button onclick="showDetails(
+'Telangana Foods',
+'Hyderabad',
+'Nacharam Industrial Area',
+'telanganafoods@gmail.com'
+)">Donate</button>
+</div>
+
+<div class="card">
+<h3>Rs.5 Meal Scheme</h3>
+<p>Affordable meals in government hospitals</p>
+<button onclick="showDetails(
+'Rs.5 Meal Scheme',
+'Telangana',
+'Government Hospitals',
+'health@telangana.gov.in'
+)">Donate</button>
+</div>
+
+</div>
+</section>
 </body>
 </html>
