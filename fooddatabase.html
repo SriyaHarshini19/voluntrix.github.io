@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Food Donation - Voluntrix</title>
+
+<style>
+body {
+  font-family: Arial;
+  margin: 0;
+  background: linear-gradient(to right, #fff3e0, #ffe0b2);
+}
+
+/* HEADER */
+header {
+  background: #fb8c00;
+  color: white;
+  text-align: center;
+  padding: 15px;
+}
+
+/* CONTAINER */
+.container {
+  padding: 20px;
+  text-align: center;
+}
+
+/* DONATION BOX */
+.donate-box {
+  background: white;
+  padding: 20px;
+  margin: 20px auto;
+  width: 300px;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+/* INPUT */
+input {
+  padding: 10px;
+  width: 80%;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+/* BUTTON */
+button {
+  background: #fb8c00;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #e65100;
+}
+
+/* DONOR LIST */
+#donorList {
+  list-style: none;
+  padding: 0;
+  margin-top: 15px;
+}
+
+#donorList li {
+  background: #fff8e1;
+  margin: 5px;
+  padding: 8px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>🍱 Food Donation - Voluntrix</h1>
+  <p>Share food, spread happiness</p>
+</header>
+
+<div class="container">
+
+  <div class="donate-box">
+    <h2>Donate Now 💖</h2>
+
+    <input type="text" id="donorName" placeholder="Enter your name">
+    <br>
+    <button onclick="addDonor()">Donate</button>
+
+    <h3>Donor History 🏆</h3>
+    <ul id="donorList"></ul>
+  </div>
+
+</div>
+
+<script>
+// Load donors when page opens
+window.onload = function() {
+  displayDonors();
+};
+
+// Add donor
+function addDonor() {
+  let name = document.getElementById("donorName").value;
+
+  if (name === "") {
+    alert("Please enter your name");
+    return;
+  }
+
+  // Get existing donors
+  let donors = JSON.parse(localStorage.getItem("donors")) || [];
+
+  // Add new donor
+  donors.push(name);
+
+  // Save to localStorage
+  localStorage.setItem("donors", JSON.stringify(donors));
+
+  // Clear input
+  document.getElementById("donorName").value = "";
+
+  // Refresh list
+  displayDonors();
+}
+
+// Display donors
+function displayDonors() {
+  let donors = JSON.parse(localStorage.getItem("donors")) || [];
+  let list = document.getElementById("donorList");
+
+  list.innerHTML = "";
+
+  donors.forEach(function(donor) {
+    let li = document.createElement("li");
+    li.textContent = donor;
+    list.appendChild(li);
+  });
+}
+</script>
+
+</body>
+</html>
