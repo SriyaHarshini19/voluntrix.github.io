@@ -34,39 +34,37 @@ header{
   box-shadow:0 8px 20px rgba(0,0,0,0.15);
 }
 
-.grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-  gap:20px;
-}
-
-.card{
+/* FORM */
+.form-box{
   background:white;
   padding:20px;
   border-radius:15px;
-  box-shadow:0 10px 25px rgba(0,0,0,0.15);
-  cursor:pointer;
-  transition:0.3s;
+  margin-bottom:30px;
+  box-shadow:0 8px 20px rgba(0,0,0,0.15);
+}
+
+.form-box input, .form-box textarea, .form-box select{
+  width:90%;
+  margin:10px 0;
+  padding:10px;
+  border-radius:8px;
+  border:1px solid #ccc;
+}
+
+/* LIST */
+.list{
+  margin-top:20px;
   text-align:left;
 }
 
-.card:hover{
-  transform:scale(1.05);
-}
-
-.details{
-  max-height:0;
-  overflow:hidden;
-  transition:max-height 0.5s ease;
-  margin-top:10px;
-}
-
-.card.active .details{
-  max-height:120px;
+.entry{
+  background:#f3e5f5;
+  padding:12px;
+  border-radius:10px;
+  margin:10px 0;
 }
 
 button{
-  margin-top:10px;
   padding:10px 15px;
   border:none;
   border-radius:8px;
@@ -99,7 +97,7 @@ footer{
 
 <header>
   <h1>Donations & Contributions</h1>
-  <p>Click on a card to donate 💜</p>
+  <p>Make a difference 💜</p>
 </header>
 
 <div class="container">
@@ -112,23 +110,30 @@ footer{
   <p>Netaji Defence Academy</p>
 </div>
 
-<div class="grid">
+<!-- UPDATED FORM -->
+<div class="form-box">
+  <h3>💜 Make a Contribution</h3>
 
-<div class="card" onclick="toggleCard(this)">
-  <h3>👩‍🏫 Faculty</h3>
-  <div class="details">
-    <button onclick="donate(event)">Donate</button>
-  </div>
+  <input type="text" id="name" placeholder="Your Name">
+
+  <!-- NEW ROLE -->
+  <select id="role">
+    <option value="">Select Role</option>
+    <option value="Faculty">Faculty</option>
+    <option value="Student">Student</option>
+  </select>
+
+  <!-- NEW INSTITUTE -->
+  <input type="text" id="institute" placeholder="Your Institution Name">
+
+  <input type="number" id="amount" placeholder="Amount (₹)">
+  <textarea id="message" placeholder="Message (optional)"></textarea>
+
+  <button onclick="addDonation()">Submit</button>
 </div>
 
-<div class="card" onclick="toggleCard(this)">
-  <h3>🎓 Students</h3>
-  <div class="details">
-    <button onclick="donate(event)">Donate</button>
-  </div>
-</div>
-
-</div>
+<!-- DISPLAY -->
+<div class="list" id="donationList"></div>
 
 <a href="index.html" class="btn">⬅ Back to Home</a>
 
@@ -139,14 +144,46 @@ footer{
 </footer>
 
 <script>
-function toggleCard(card){
-  card.classList.toggle("active");
+function addDonation(){
+  let name = document.getElementById("name").value;
+  let role = document.getElementById("role").value;
+  let institute = document.getElementById("institute").value;
+  let amount = document.getElementById("amount").value;
+  let message = document.getElementById("message").value;
+
+  if(name === "" || role === "" || institute === "" || amount === ""){
+    alert("Please fill all required fields");
+    return;
+  }
+
+  let donation = {name, role, institute, amount, message};
+
+  let donations = JSON.parse(localStorage.getItem("donations")) || [];
+  donations.push(donation);
+  localStorage.setItem("donations", JSON.stringify(donations));
+
+  displayDonations();
 }
 
-function donate(event){
-  event.stopPropagation();
-  alert("Donation feature coming soon 💜");
+function displayDonations(){
+  let donations = JSON.parse(localStorage.getItem("donations")) || [];
+  let list = document.getElementById("donationList");
+
+  list.innerHTML = "<h3>Recent Contributions</h3>";
+
+  donations.forEach(d => {
+    list.innerHTML += `
+      <div class="entry">
+        <strong>${d.name}</strong> (${d.role})<br>
+        🏫 ${d.institute}<br>
+        💰 Donated ₹${d.amount}<br>
+        <small>${d.message || ""}</small>
+      </div>
+    `;
+  });
 }
+
+displayDonations();
 </script>
 
 </body>
