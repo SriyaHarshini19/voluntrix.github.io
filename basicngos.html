@@ -2,119 +2,110 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>About Us - Voluntrix</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Basic Needs NGOs - Telangana</title>
 
 <style>
 body {
-  font-family: 'Poppins', sans-serif;
+  font-family: Arial;
   margin: 0;
-  background: linear-gradient(to right, #fff3e0, #ffe0b2);
-  overflow-x: hidden;
+  background: linear-gradient(-45deg, #2196f3, #64b5f6, #1e88e5, #42a5f5);
+  background-size: 400% 400%;
+  animation: blueGradient 10s ease infinite;
 }
 
-/* HEADER */
+/* Animation */
+@keyframes blueGradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Header */
 header {
-  background: #fb8c00;
+  background: #1565c0;
   color: white;
   text-align: center;
-  padding: 30px;
-  animation: fadeDown 1s ease;
+  padding: 20px;
 }
 
-@keyframes fadeDown {
-  from {opacity:0; transform: translateY(-50px);}
-  to {opacity:1; transform: translateY(0);}
-}
-
-/* CONTAINER */
-.container {
-  padding: 40px;
+/* Navigation */
+nav {
+  background: #0d47a1;
+  padding: 10px;
   text-align: center;
 }
 
-/* CARDS */
-.card {
-  background: white;
-  margin: 25px auto;
-  padding: 25px;
-  border-radius: 15px;
-  width: 80%;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
-  opacity: 0;
-  transform: translateY(50px);
-  transition: 0.6s;
-}
-
-.card.show {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.card:hover {
-  transform: scale(1.05);
-}
-
-/* FOUNDERS GRID */
-.founders {
-  display:flex;
-  flex-wrap:wrap;
-  justify-content:center;
-  gap:15px;
-  margin-top:20px;
-}
-
-.founder-box {
-  background:#fff3e0;
-  padding:15px 20px;
-  border-radius:10px;
-  transition:0.3s;
-}
-
-.founder-box:hover {
-  background:#ffe0b2;
-  transform: scale(1.1);
-}
-
-/* BUTTON */
-.btn {
-  display: inline-block;
-  margin-top: 30px;
-  padding: 12px 25px;
-  background: #fb8c00;
-  color: white;
+nav a {
+  color: #bbdefb;
+  margin: 10px;
   text-decoration: none;
+  font-weight: bold;
+}
+
+/* Section */
+.section {
+  padding: 30px;
+  text-align: center;
+}
+
+/* Grid */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+/* Cards */
+.card {
+  background: rgba(255, 255, 255, 0.95);
+  padding: 20px;
   border-radius: 10px;
+  box-shadow: 0 5px 10px rgba(0,0,0,0.2);
   transition: 0.3s;
 }
 
-.btn:hover {
-  background: #e65100;
-  transform: scale(1.1);
+.card:hover {
+  transform: translateY(-8px);
 }
 
-/* FOOTER */
-footer {
-  background: #fb8c00;
+/* Button */
+button {
+  background: #1e88e5;
   color: white;
-  text-align: center;
-  padding: 15px;
-  margin-top: 30px;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
-/* FLOATING ICON */
-.floating {
+/* Popup */
+.popup {
+  display: none;
   position: fixed;
-  bottom: 20px;
-  right: 20px;
-  font-size: 30px;
-  animation: bounce 2s infinite;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.6);
 }
 
-@keyframes bounce {
-  0%,100% {transform: translateY(0);}
-  50% {transform: translateY(-10px);}
+.popup-content {
+  background: white;
+  width: 320px;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  animation: popupAnim 0.4s forwards;
+}
+
+@keyframes popupAnim {
+  from { transform: translate(-50%, -50%) scale(0); }
+  to { transform: translate(-50%, -50%) scale(1); }
 }
 </style>
 </head>
@@ -122,90 +113,91 @@ footer {
 <body>
 
 <header>
-  <h1>About Voluntrix</h1>
-  <p>Connecting Hearts ❤️ Creating Change 🌍</p>
+  <h1>Basic Needs Support NGOs - Telangana</h1>
 </header>
 
-<div class="container">
+<nav>
+  <a href="index.html">Home</a>
+  <a href="basic.html">Basic Needs</a>
+</nav>
 
-  <!-- WHO WE ARE -->
-  <div class="card">
-    <h2>Who We Are</h2>
-    <p>
-      Voluntrix connects people with NGOs to donate food, medicine,
-      and essential resources to those in need.
-    </p>
-  </div>
+<!-- HYDERABAD -->
+<section class="section">
+<h2>Hyderabad District</h2>
+<div class="grid">
 
-  <!-- MISSION -->
-  <div class="card">
-    <h2>Our Mission</h2>
-    <p>
-      We aim to reduce hunger and support communities by bridging
-      the gap between donors and NGOs.
-    </p>
-  </div>
-
-  <!-- FOUNDERS -->
-  <div class="card">
-    <h2>Our Founders</h2>
-
-    <div class="founders">
-      <div class="founder-box">V. Sriya Harshini</div>
-      <div class="founder-box">S. Prathibha Shalini</div>
-      <div class="founder-box">S. Manushree</div>
-      <div class="founder-box">T. Manasa</div>
-      <div class="founder-box">P. Himani</div>
-    </div>
-  </div>
-
-  <!-- WHY VOLUNTRIX -->
-  <div class="card">
-    <h2>Why Voluntrix?</h2>
-    <p>
-      Voluntrix was created with a simple yet powerful vision — to make helping others easy and accessible for everyone. 
-      In today’s world, many people are willing to donate or volunteer but often don’t know where to start or whom to trust. 
-      At the same time, many NGOs struggle to reach the right supporters.
-    </p>
-
-    <p>
-      Our platform bridges this gap by connecting donors, volunteers, and NGOs in one place. 
-      Whether it is food, medicine, or basic necessities, Voluntrix ensures that every contribution reaches those who truly need it.
-    </p>
-
-    <p>
-      We believe that even small actions can create big changes. By simplifying the process of giving and volunteering, 
-      we empower individuals to become a part of something bigger — a community driven by compassion, support, and impact.
-    </p>
-
-    <p>
-      Voluntrix is not just a website, it is a step towards building a better and more connected society.
-    </p>
-  </div>
-
-  <a href="index.html" class="btn">⬅ Back to Home</a>
-
+<div class="card">
+<h3>Terminate Hunger</h3>
+<p>Food, clothes & basic support</p>
+<button onclick="showDetails('Terminate Hunger','Hyderabad','Malakpet','info@terminatehunger.org')">View Details</button>
 </div>
 
-<div class="floating">🌍</div>
+<div class="card">
+<h3>Akshaya Patra Foundation</h3>
+<p>Food, education & basic needs</p>
+<button onclick="showDetails('Akshaya Patra','Hyderabad','Kokapet','info@akshayapatra.org')">View Details</button>
+</div>
 
-<footer>
-  <p>© 2026 Voluntrix | All Rights Reserved</p>
-</footer>
+<div class="card">
+<h3>Helping Hand Foundation</h3>
+<p>Food, medicines & emergency help</p>
+<button onclick="showDetails('Helping Hand','Hyderabad','Shivarampally','help@hhf.org')">View Details</button>
+</div>
+
+<div class="card">
+<h3>Sahara Team Trust</h3>
+<p>Food, clothes & shelter support</p>
+<button onclick="showDetails('Sahara Trust','Hyderabad','Nampally','sahara@gmail.com')">View Details</button>
+</div>
+
+</div>
+</section>
+
+<!-- POPUP -->
+<div class="popup" id="popup">
+  <div class="popup-content">
+    <h3 id="ngoName"></h3>
+    <p id="ngoLocation"></p>
+    <p id="ngoAddress"></p>
+    <p id="ngoEmail"></p>
+    <button onclick="closePopup()">Close</button>
+  </div>
+</div>
 
 <script>
-// SCROLL ANIMATION
-const cards = document.querySelectorAll('.card');
+function showDetails(name, location, address, email) {
+  document.getElementById("popup").style.display = "block";
+  document.getElementById("ngoName").innerText = name;
+  document.getElementById("ngoLocation").innerText = "Location: " + location;
+  document.getElementById("ngoAddress").innerText = "Address: " + address;
+  document.getElementById("ngoEmail").innerText = "Contact Email: " + email;
+}
 
-window.addEventListener('scroll', () => {
-  cards.forEach(card => {
-    const cardTop = card.getBoundingClientRect().top;
-    if(cardTop < window.innerHeight - 100){
-      card.classList.add('show');
-    }
-  });
-});
+function closePopup() {
+  document.getElementById("popup").style.display = "none";
+}
 </script>
+
+<!-- GOVERNMENT PROGRAMS -->
+<section class="section">
+<h2>Government Basic Needs Programs</h2>
+
+<div class="grid">
+
+<div class="card">
+<h3>Annapurna Scheme</h3>
+<p>Food support & basic necessities</p>
+<button onclick="showDetails('Annapurna Scheme','Hyderabad','200+ Centers','annapurna@telangana.gov.in')">View Details</button>
+</div>
+
+<div class="card">
+<h3>Public Distribution System</h3>
+<p>Food, grains & essential supplies</p>
+<button onclick="showDetails('PDS Telangana','Telangana','Ration Shops','pds@telangana.gov.in')">View Details</button>
+</div>
+
+</div>
+</section>
 
 </body>
 </html>
