@@ -10,14 +10,22 @@
 body {
   font-family: 'Poppins', sans-serif;
   margin: 0;
-  background: linear-gradient(to right, #fff3e0, #ffe0b2);
   overflow-x: hidden;
+  background: linear-gradient(-45deg, #ffdce5, #ffe4ec, #ffc1d6, #ffeaf4);
+  background-size: 400% 400%;
+  animation: pastelPinkMove 10s ease infinite;
+}
+
+@keyframes pastelPinkMove {
+  0% {background-position: 0% 50%;}
+  50% {background-position: 100% 50%;}
+  100% {background-position: 0% 50%;}
 }
 
 /* HEADER */
 header {
-  background: #fb8c00;
-  color: white;
+  background: rgba(255,255,255,0.25);
+  color: #5a3d4d;
   text-align: center;
   padding: 30px;
   animation: fadeDown 1s ease;
@@ -36,12 +44,12 @@ header {
 
 /* CARDS */
 .card {
-  background: white;
+  background: rgba(255,255,255,0.95);
   margin: 25px auto;
   padding: 25px;
   border-radius: 15px;
   width: 80%;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.12);
   opacity: 0;
   transform: translateY(50px);
   transition: 0.6s;
@@ -66,14 +74,14 @@ header {
 }
 
 .founder-box {
-  background:#fff3e0;
+  background:#fff0f5;
   padding:15px 20px;
   border-radius:10px;
   transition:0.3s;
 }
 
 .founder-box:hover {
-  background:#ffe0b2;
+  background:#ffd6e7;
   transform: scale(1.1);
 }
 
@@ -82,7 +90,7 @@ header {
   display: inline-block;
   margin-top: 30px;
   padding: 12px 25px;
-  background: #fb8c00;
+  background: #f48fb1;
   color: white;
   text-decoration: none;
   border-radius: 10px;
@@ -90,14 +98,14 @@ header {
 }
 
 .btn:hover {
-  background: #e65100;
+  background: #ec407a;
   transform: scale(1.1);
 }
 
 /* FOOTER */
 footer {
-  background: #fb8c00;
-  color: white;
+  background: rgba(255,255,255,0.25);
+  color: #5a3d4d;
   text-align: center;
   padding: 15px;
   margin-top: 30px;
@@ -128,28 +136,30 @@ footer {
 
 <div class="container">
 
-  <!-- WHO WE ARE -->
   <div class="card">
-    <h2>Who We Are</h2>
+    <h2>Why Voluntrix</h2>
     <p>
-      Voluntrix connects people with NGOs to donate food, medicine,
-      and essential resources to those in need.
+      Voluntrix was created with a simple vision — to make helping others easy and accessible.
+      Many people are willing to donate or volunteer but often do not know where to begin.
+      Our platform bridges that gap by connecting donors, volunteers, and NGOs.
     </p>
   </div>
 
-  <!-- MISSION -->
   <div class="card">
-    <h2>Our Mission</h2>
+    <h2>Foundation of Voluntrix</h2>
     <p>
-      We aim to reduce hunger and support communities by bridging
-      the gap between donors and NGOs.
+      Voluntrix was founded at the prestigious
+      Megha Institute of Engineering and Technology.
+      The institute provided its best resources to support
+      the creation of this revolutionary idea.
+      The management offered strong support through
+      staff guidance, helping us throughout the journey
+      of building our mission — Voluntrix.
     </p>
   </div>
 
-  <!-- FOUNDERS -->
   <div class="card">
     <h2>Our Founders</h2>
-
     <div class="founders">
       <div class="founder-box">V. Sriya Harshini</div>
       <div class="founder-box">S. Prathibha Shalini</div>
@@ -159,27 +169,11 @@ footer {
     </div>
   </div>
 
-  <!-- WHY VOLUNTRIX -->
   <div class="card">
-    <h2>Why Voluntrix?</h2>
+    <h2>Our Mission</h2>
     <p>
-      Voluntrix was created with a simple yet powerful vision — to make helping others easy and accessible for everyone. 
-      In today’s world, many people are willing to donate or volunteer but often don’t know where to start or whom to trust. 
-      At the same time, many NGOs struggle to reach the right supporters.
-    </p>
-
-    <p>
-      Our platform bridges this gap by connecting donors, volunteers, and NGOs in one place. 
-      Whether it is food, medicine, or basic necessities, Voluntrix ensures that every contribution reaches those who truly need it.
-    </p>
-
-    <p>
-      We believe that even small actions can create big changes. By simplifying the process of giving and volunteering, 
-      we empower individuals to become a part of something bigger — a community driven by compassion, support, and impact.
-    </p>
-
-    <p>
-      Voluntrix is not just a website, it is a step towards building a better and more connected society.
+      We aim to reduce hunger and support communities by bridging
+      the gap between donors and NGOs.
     </p>
   </div>
 
@@ -187,14 +181,13 @@ footer {
 
 </div>
 
-<div class="floating">🌍</div>
+<div class="floating">🌸</div>
 
 <footer>
   <p>© 2026 Voluntrix | All Rights Reserved</p>
 </footer>
 
 <script>
-// SCROLL ANIMATION
 const cards = document.querySelectorAll('.card');
 
 window.addEventListener('scroll', () => {
