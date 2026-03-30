@@ -58,7 +58,6 @@ nav a {
 
 /* CARDS */
 .card {
-  <button onclick="goToNGO()">View Nearby NGOs</button>
   background: #e6e6fa;
   margin: 20px auto;
   padding: 20px;
@@ -115,7 +114,8 @@ footer {
 <nav>
   <a href="index.html">🏠 Home </a>
   <a href="ngos.html">🏢 View NGOs</a>
-  <a href="#donate">Donate</a>
+  <!-- ✅ LINKED HERE -->
+  <a href="food-donation.html">Donate</a>
   <button class="login-btn" onclick="login()">Login</button>
 </nav>
 
@@ -127,7 +127,6 @@ footer {
 <section id="ngo" class="ngo-section">
   <h2>Food Tracking</h2>
 
-  <!-- Tracker -->
   <div class="card">
     <h3>Tracking 📦</h3>
     <p>Track food donations in real-time</p>
@@ -145,7 +144,10 @@ footer {
 
 <section id="donate" class="donate">
   <h2>Donate Food</h2>
-  <button onclick="addDonation()">Donate Now</button>
+  <!-- ✅ LINKED BUTTON -->
+  <button onclick="window.location.href='food-donation.html'">
+    Donate Now
+  </button>
 </section>
 
 <footer>
@@ -153,12 +155,12 @@ footer {
 </footer>
 
 <script>
-  function goToNGO() {
+function goToNGO() {
   window.location.href = "ngos.html";
-  }
+}
+
 let donations = [];
 
-// 📍 Add donation with location
 function addDonation() {
   let donor = prompt("Enter your name:");
   let quantity = prompt("Enter number of meals:");
@@ -191,7 +193,6 @@ function addDonation() {
   }
 }
 
-// 📊 Update tracker
 function updateTracker() {
   let tracker = document.getElementById("trackerList");
   tracker.innerHTML = "";
@@ -209,12 +210,10 @@ function updateTracker() {
   });
 }
 
-// 👀 Show tracker
 function showTracker() {
   document.getElementById("trackerBox").style.display = "block";
 }
 
-// 🔐 Login
 function login() {
   let user = prompt("Enter username:");
   if (user) {
@@ -222,7 +221,6 @@ function login() {
   }
 }
 
-// 🔽 Scroll
 function scrollToSection() {
   document.getElementById("ngo").scrollIntoView({
     behavior: "smooth"
