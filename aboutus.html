@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>About Us - Voluntrix</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+body {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  background: linear-gradient(to right, #fff3e0, #ffe0b2);
+  overflow-x: hidden;
+}
+
+/* HEADER */
+header {
+  background: #fb8c00;
+  color: white;
+  text-align: center;
+  padding: 30px;
+  animation: fadeDown 1s ease;
+}
+
+@keyframes fadeDown {
+  from {opacity:0; transform: translateY(-50px);}
+  to {opacity:1; transform: translateY(0);}
+}
+
+/* CONTAINER */
+.container {
+  padding: 40px;
+  text-align: center;
+}
+
+/* CARDS */
+.card {
+  background: white;
+  margin: 25px auto;
+  padding: 25px;
+  border-radius: 15px;
+  width: 80%;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+  opacity: 0;
+  transform: translateY(50px);
+  transition: 0.6s;
+}
+
+.card.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+/* FOUNDERS GRID */
+.founders {
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:15px;
+  margin-top:20px;
+}
+
+.founder-box {
+  background:#fff3e0;
+  padding:15px 20px;
+  border-radius:10px;
+  transition:0.3s;
+}
+
+.founder-box:hover {
+  background:#ffe0b2;
+  transform: scale(1.1);
+}
+
+/* BUTTON */
+.btn {
+  display: inline-block;
+  margin-top: 30px;
+  padding: 12px 25px;
+  background: #fb8c00;
+  color: white;
+  text-decoration: none;
+  border-radius: 10px;
+  transition: 0.3s;
+}
+
+.btn:hover {
+  background: #e65100;
+  transform: scale(1.1);
+}
+
+/* FOOTER */
+footer {
+  background: #fb8c00;
+  color: white;
+  text-align: center;
+  padding: 15px;
+  margin-top: 30px;
+}
+
+/* FLOATING ICON */
+.floating {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  font-size: 30px;
+  animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+  0%,100% {transform: translateY(0);}
+  50% {transform: translateY(-10px);}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>About Voluntrix</h1>
+  <p>Connecting Hearts ❤️ Creating Change 🌍</p>
+</header>
+
+<div class="container">
+
+  <!-- WHO WE ARE -->
+  <div class="card">
+    <h2>Who We Are</h2>
+    <p>
+      Voluntrix connects people with NGOs to donate food, medicine,
+      and essential resources to those in need.
+    </p>
+  </div>
+
+  <!-- MISSION -->
+  <div class="card">
+    <h2>Our Mission</h2>
+    <p>
+      We aim to reduce hunger and support communities by bridging
+      the gap between donors and NGOs.
+    </p>
+  </div>
+
+  <!-- FOUNDERS -->
+  <div class="card">
+    <h2>Our Founders</h2>
+
+    <div class="founders">
+      <div class="founder-box">V. Sriya Harshini</div>
+      <div class="founder-box">S. Prathibha Shalini</div>
+      <div class="founder-box">S. Manushree</div>
+      <div class="founder-box">T. Manasa</div>
+      <div class="founder-box">P. Himani</div>
+    </div>
+  </div>
+
+  <!-- WHY VOLUNTRIX -->
+  <div class="card">
+    <h2>Why Voluntrix?</h2>
+    <p>
+      Voluntrix was created with a simple yet powerful vision — to make helping others easy and accessible for everyone. 
+      In today’s world, many people are willing to donate or volunteer but often don’t know where to start or whom to trust. 
+      At the same time, many NGOs struggle to reach the right supporters.
+    </p>
+
+    <p>
+      Our platform bridges this gap by connecting donors, volunteers, and NGOs in one place. 
+      Whether it is food, medicine, or basic necessities, Voluntrix ensures that every contribution reaches those who truly need it.
+    </p>
+
+    <p>
+      We believe that even small actions can create big changes. By simplifying the process of giving and volunteering, 
+      we empower individuals to become a part of something bigger — a community driven by compassion, support, and impact.
+    </p>
+
+    <p>
+      Voluntrix is not just a website, it is a step towards building a better and more connected society.
+    </p>
+  </div>
+
+  <a href="index.html" class="btn">⬅ Back to Home</a>
+
+</div>
+
+<div class="floating">🌍</div>
+
+<footer>
+  <p>© 2026 Voluntrix | All Rights Reserved</p>
+</footer>
+
+<script>
+// SCROLL ANIMATION
+const cards = document.querySelectorAll('.card');
+
+window.addEventListener('scroll', () => {
+  cards.forEach(card => {
+    const cardTop = card.getBoundingClientRect().top;
+    if(cardTop < window.innerHeight - 100){
+      card.classList.add('show');
+    }
+  });
+});
+</script>
+
+</body>
+</html>
