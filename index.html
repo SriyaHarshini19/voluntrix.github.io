@@ -133,8 +133,6 @@
       box-shadow: 0 10px 25px rgba(0,0,0,0.1);
       transition: all 0.4s ease;
       cursor: pointer;
-      position: relative;
-      overflow: hidden;
     }
 
     .card h4 {
@@ -215,7 +213,6 @@
   <ul>
     <li><a href="#">Home</a></li>
     <li><a href="#categories">Categories</a></li>
-    <!-- Optional direct link -->
     <li><a href="donation.html">Donations</a></li>
   </ul>
 
@@ -234,7 +231,16 @@
   <h3>Categories</h3>
 
   <div class="grid">
-    
+
+    <!-- 1️⃣ College -->
+    <a href="donation.html" style="text-decoration:none; color:inherit;">
+      <div class="card college">
+        <h4>🎓 College Organization</h4>
+        <p>Support college-based contributions</p>
+      </div>
+    </a>
+
+    <!-- 2️⃣ Volunteering -->
     <a href="volunteer.html" style="text-decoration:none; color:inherit;">
       <div class="card volunteer">
         <h4>🤝 Volunteering</h4>
@@ -242,14 +248,7 @@
       </div>
     </a>
 
- <!-- ✅ LINKED TO DONATION PAGE -->
-    <a href="donation.html" style="text-decoration:none; color:inherit;">
-      <div class="card college">
-        <h4>🎓 College Organisation</h4>
-        <p>Support college-based contributions</p>
-      </div>
-    </a>
-
+    <!-- 3️⃣ Food -->
     <a href="food.html" style="text-decoration: none; color: inherit;">
       <div class="card food">
         <h4>🍱 Food</h4>
@@ -257,17 +256,19 @@
       </div>
     </a>
 
-    <a href="education.html" style="text-decoration: none; color: inherit;">
-      <div class="card education">
-        <h4>📚 Education</h4>
-        <p>Support learning & schools</p>
-      </div>
-    </a>
-
+    <!-- 4️⃣ Basic Needs -->
     <a href="basic.html" style="text-decoration:none; color:inherit;">
       <div class="card basic">
         <h4>🏠 Basic Needs</h4>
         <p>Help with essentials</p>
+      </div>
+    </a>
+
+    <!-- 5️⃣ Education -->
+    <a href="education.html" style="text-decoration: none; color: inherit;">
+      <div class="card education">
+        <h4>📚 Education</h4>
+        <p>Support learning & schools</p>
       </div>
     </a>
 
