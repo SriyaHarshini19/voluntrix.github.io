@@ -32,8 +32,22 @@
       top: 0;
     }
 
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo img {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
     nav h1 {
       color: #2e7d32;
+      font-size: 1.5rem;
     }
 
     nav ul {
@@ -208,7 +222,10 @@
 <body>
 
 <nav>
-  <h1>Voluntrix</h1>
+  <div class="logo">
+    <img src="https://raw.githubusercontent.com/SriyaHarshini19/voluntrix.github.io/750440e033f924f819d73225abe27c8dcbcb0041/logo.jpeg" alt="Logo">
+    <h1>Voluntrix</h1>
+  </div>
 
   <ul>
     <li><a href="#">Home</a></li>
@@ -232,7 +249,6 @@
 
   <div class="grid">
 
-    <!-- 1️⃣ College -->
     <a href="donation.html" style="text-decoration:none; color:inherit;">
       <div class="card college">
         <h4>🎓 College Organization</h4>
@@ -240,7 +256,6 @@
       </div>
     </a>
 
-    <!-- 2️⃣ Volunteering -->
     <a href="volunteer.html" style="text-decoration:none; color:inherit;">
       <div class="card volunteer">
         <h4>🤝 Volunteering</h4>
@@ -248,7 +263,6 @@
       </div>
     </a>
 
-    <!-- 3️⃣ Food -->
     <a href="food.html" style="text-decoration: none; color: inherit;">
       <div class="card food">
         <h4>🍱 Food</h4>
@@ -256,7 +270,6 @@
       </div>
     </a>
 
-    <!-- 4️⃣ Basic Needs -->
     <a href="basic.html" style="text-decoration:none; color:inherit;">
       <div class="card basic">
         <h4>🏠 Basic Needs</h4>
@@ -264,7 +277,6 @@
       </div>
     </a>
 
-    <!-- 5️⃣ Education -->
     <a href="education.html" style="text-decoration: none; color: inherit;">
       <div class="card education">
         <h4>📚 Education</h4>
