@@ -70,6 +70,7 @@
       display: flex;
       align-items: center;
       gap: 10px;
+      position: relative;
     }
 
     .btn {
@@ -78,16 +79,11 @@
       border-radius: 10px;
       cursor: pointer;
       font-weight: 600;
-      transition: 0.3s;
     }
 
     .btn-primary {
       background: #4caf50;
       color: white;
-    }
-
-    .btn-primary:hover {
-      transform: scale(1.05);
     }
 
     .about-btn {
@@ -97,34 +93,67 @@
       color: white;
       border-radius: 10px;
       font-weight: 600;
-      transition: 0.3s;
     }
 
-    .about-btn:hover {
-      background: #e65100;
-      transform: scale(1.05);
+    /* Profile */
+    .profile-container {
+      display: none;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+    }
+
+    .profile-circle {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: linear-gradient(45deg, #4caf50, #2e7d32);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      animation: bounce 1s infinite alternate;
+    }
+
+    @keyframes bounce {
+      from { transform: translateY(0px); }
+      to { transform: translateY(-5px); }
+    }
+
+    .username-text {
+      font-weight: 600;
+      color: #2e7d32;
+    }
+
+    .dropdown {
+      display: none;
+      position: absolute;
+      top: 55px;
+      right: 0;
+      background: white;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .dropdown div {
+      padding: 10px 20px;
+      cursor: pointer;
+    }
+
+    .dropdown div:hover {
+      background: #f0f0f0;
     }
 
     .hero {
       text-align: center;
       padding: 80px 20px;
-      animation: fadeIn 1s ease;
     }
 
     .hero h2 {
       font-size: 2.8rem;
       margin-bottom: 20px;
-    }
-
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(-20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
     }
 
     .categories {
@@ -149,16 +178,6 @@
       cursor: pointer;
     }
 
-    .card h4 {
-      font-size: 1.3rem;
-      margin-bottom: 10px;
-    }
-
-    .card p {
-      font-size: 0.9rem;
-      color: #666;
-    }
-
     .card:hover {
       transform: translateY(-12px) scale(1.05);
       box-shadow: 0 15px 35px rgba(0,0,0,0.2);
@@ -169,12 +188,6 @@
     .volunteer { background: #ffebee; }
     .basic { background: #fff3e0; }
     .college { background: #ede7f6; }
-
-    .about {
-      background: white;
-      padding: 60px 20px;
-      text-align: center;
-    }
 
     footer {
       background: #222;
@@ -210,12 +223,6 @@
       border-radius: 8px;
       border: 1px solid #ccc;
     }
-
-    .switch {
-      color: blue;
-      cursor: pointer;
-      font-size: 14px;
-    }
   </style>
 </head>
 
@@ -223,7 +230,7 @@
 
 <nav>
   <div class="logo">
-    <img src="https://raw.githubusercontent.com/SriyaHarshini19/voluntrix.github.io/750440e033f924f819d73225abe27c8dcbcb0041/logo.jpeg" alt="Logo">
+    <img src="https://raw.githubusercontent.com/SriyaHarshini19/voluntrix.github.io/750440e033f924f819d73225abe27c8dcbcb0041/logo.jpeg">
     <h1>Voluntrix</h1>
   </div>
 
@@ -235,7 +242,16 @@
 
   <div class="nav-right">
     <a href="about.html" class="about-btn">About</a>
-    <button class="btn btn-primary" onclick="openModal()">Login</button>
+    <button class="btn btn-primary" id="loginBtn" onclick="openModal()">Login</button>
+
+    <div class="profile-container" id="profileContainer" onclick="toggleDropdown()">
+      <div class="profile-circle" id="profileCircle"></div>
+      <span class="username-text" id="usernameText"></span>
+    </div>
+
+    <div class="dropdown" id="dropdownMenu">
+      <div onclick="logout()">Logout</div>
+    </div>
   </div>
 </nav>
 
@@ -248,7 +264,6 @@
   <h3>Categories</h3>
 
   <div class="grid">
-
     <a href="donation.html" style="text-decoration:none; color:inherit;">
       <div class="card college">
         <h4>🎓 College Organization</h4>
@@ -283,13 +298,7 @@
         <p>Support learning & schools</p>
       </div>
     </a>
-
   </div>
-</section>
-
-<section class="about" id="about">
-  <h3>About</h3>
-  <p>Voluntrix connects people with meaningful causes and opportunities.</p>
 </section>
 
 <footer>
@@ -298,36 +307,54 @@
 
 <div class="modal" id="authModal">
   <div class="modal-content">
-    <h3 id="formTitle">Login</h3>
+    <h3>Create Account</h3>
     <input type="text" id="username" placeholder="Username">
     <input type="password" id="password" placeholder="Password">
     <button class="btn btn-primary" onclick="handleAuth()">Submit</button>
-    <p class="switch" onclick="toggleForm()">Don't have an account? Sign up</p>
   </div>
 </div>
 
 <script>
-  let isLogin = true;
-
   function openModal() {
     document.getElementById("authModal").style.display = "flex";
   }
 
-  function toggleForm() {
-    isLogin = !isLogin;
-    document.getElementById("formTitle").innerText =
-      isLogin ? "Login" : "Sign Up";
-    document.querySelector(".switch").innerText =
-      isLogin
-        ? "Don't have an account? Sign up"
-        : "Already have an account? Login";
-  }
-
   function handleAuth() {
     const user = document.getElementById("username").value;
-    alert(isLogin ? "Logged in as " + user : "Account created for " + user);
+    const pass = document.getElementById("password").value;
+
+    if(user === "" || pass === "") {
+      alert("Enter username and password");
+      return;
+    }
+
+    localStorage.setItem("voluntrixUser", user);
     document.getElementById("authModal").style.display = "none";
+    updateNavbar();
   }
+
+  function updateNavbar() {
+    const user = localStorage.getItem("voluntrixUser");
+
+    if(user) {
+      document.getElementById("loginBtn").style.display = "none";
+      document.getElementById("profileContainer").style.display = "flex";
+      document.getElementById("profileCircle").innerText = user.charAt(0).toUpperCase();
+      document.getElementById("usernameText").innerText = user;
+    }
+  }
+
+  function toggleDropdown() {
+    const menu = document.getElementById("dropdownMenu");
+    menu.style.display = menu.style.display === "block" ? "none" : "block";
+  }
+
+  function logout() {
+    localStorage.removeItem("voluntrixUser");
+    location.reload();
+  }
+
+  window.onload = updateNavbar;
 </script>
 
 </body>
