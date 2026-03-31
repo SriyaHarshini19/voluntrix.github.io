@@ -34,7 +34,6 @@ header{
   box-shadow:0 8px 20px rgba(0,0,0,0.15);
 }
 
-/* FORM */
 .form-box{
   background:white;
   padding:20px;
@@ -49,9 +48,9 @@ header{
   padding:10px;
   border-radius:8px;
   border:1px solid #ccc;
+  font-size:15px;
 }
 
-/* QR CODE */
 .qr-box{
   margin-top:20px;
   background:#fafafa;
@@ -59,13 +58,13 @@ header{
   border-radius:12px;
   box-shadow:0 4px 12px rgba(0,0,0,0.1);
 }
+
 .qr-box img{
   width:220px;
   max-width:100%;
   border-radius:12px;
 }
 
-/* LIST */
 .list{
   margin-top:20px;
   text-align:left;
@@ -85,6 +84,11 @@ button{
   background:#7e57c2;
   color:white;
   cursor:pointer;
+  font-size:15px;
+}
+
+button:hover{
+  background:#673ab7;
 }
 
 .btn{
@@ -95,6 +99,10 @@ button{
   color:white;
   text-decoration:none;
   border-radius:10px;
+}
+
+.btn:hover{
+  background:#673ab7;
 }
 
 footer{
@@ -124,7 +132,6 @@ footer{
   <p>Netaji Defence Academy</p>
 </div>
 
-<!-- UPDATED FORM -->
 <div class="form-box">
   <h3>💜 Make a Contribution</h3>
 
@@ -139,19 +146,18 @@ footer{
   <input type="text" id="institute" placeholder="Your Institution Name">
 
   <input type="number" id="amount" placeholder="Amount (₹)">
+  
   <textarea id="message" placeholder="Message (optional)"></textarea>
 
-  <!-- QR CODE -->
   <div class="qr-box">
     <p><strong>Scan to Pay</strong></p>
-    <img src="QR CODE 2.jpeg" alt="Payment QR Code">
+    <img src="qrcode2.jpeg" alt="Payment QR Code">
     <p style="font-size:13px;color:#666;">After payment, please submit your details above.</p>
   </div>
 
   <button onclick="addDonation()">Submit</button>
 </div>
 
-<!-- DISPLAY -->
 <div class="list" id="donationList"></div>
 
 <a href="index.html" class="btn">⬅ Back to Home</a>
@@ -180,6 +186,14 @@ function addDonation(){
   let donations = JSON.parse(localStorage.getItem("donations")) || [];
   donations.push(donation);
   localStorage.setItem("donations", JSON.stringify(donations));
+
+  document.getElementById("name").value = "";
+  document.getElementById("role").value = "";
+  document.getElementById("institute").value = "";
+  document.getElementById("amount").value = "";
+  document.getElementById("message").value = "";
+
+  alert("Contribution submitted successfully 💜");
 
   displayDonations();
 }
