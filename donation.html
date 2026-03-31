@@ -51,6 +51,20 @@ header{
   border:1px solid #ccc;
 }
 
+/* QR CODE */
+.qr-box{
+  margin-top:20px;
+  background:#fafafa;
+  padding:15px;
+  border-radius:12px;
+  box-shadow:0 4px 12px rgba(0,0,0,0.1);
+}
+.qr-box img{
+  width:220px;
+  max-width:100%;
+  border-radius:12px;
+}
+
 /* LIST */
 .list{
   margin-top:20px;
@@ -116,18 +130,23 @@ footer{
 
   <input type="text" id="name" placeholder="Your Name">
 
-  <!-- NEW ROLE -->
   <select id="role">
     <option value="">Select Role</option>
     <option value="Faculty">Faculty</option>
     <option value="Student">Student</option>
   </select>
 
-  <!-- NEW INSTITUTE -->
   <input type="text" id="institute" placeholder="Your Institution Name">
 
   <input type="number" id="amount" placeholder="Amount (₹)">
   <textarea id="message" placeholder="Message (optional)"></textarea>
+
+  <!-- QR CODE -->
+  <div class="qr-box">
+    <p><strong>Scan to Pay</strong></p>
+    <img src="QR CODE 2.jpeg" alt="Payment QR Code">
+    <p style="font-size:13px;color:#666;">After payment, please submit your details above.</p>
+  </div>
 
   <button onclick="addDonation()">Submit</button>
 </div>
